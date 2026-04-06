@@ -981,9 +981,9 @@ measurement is not available at this stage of the pipeline. Consider adding modu
             tricky_values = numpy.zeros((len(values) + 1,))
             tricky_values[1:] = values
             if wants_max:
-                tricky_values[0] = -numpy.Inf
+                tricky_values[0] = -numpy.inf
             else:
-                tricky_values[0] = numpy.Inf
+                tricky_values[0] = numpy.inf
             src_values = tricky_values[src_labels]
             #
             # Now find the location of the best for each of the enclosing objects

@@ -3108,10 +3108,10 @@ Enter a name to give the color-coded image of tracked labels.""",
             minimum_lifetime = (
                 self.min_lifetime.value
                 if self.wants_minimum_lifetime.value
-                else -np.Inf
+                else -np.inf
             )
             maximum_lifetime = (
-                self.max_lifetime.value if self.wants_maximum_lifetime.value else np.Inf
+                self.max_lifetime.value if self.wants_maximum_lifetime.value else np.inf
             )
 
         for image_number in image_numbers:
