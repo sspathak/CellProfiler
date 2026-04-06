@@ -210,7 +210,7 @@ Select the previously identified objects you would like to measure.""".format(
 
             total_area = numpy.sum(mask)
         else:
-            total_area = numpy.product(label_image.shape)
+            total_area = numpy.prod(label_image.shape)
 
         region_properties = skimage.measure.regionprops(label_image)
 

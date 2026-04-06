@@ -516,8 +516,8 @@ a separate alignment to the first image can be calculated:
         # the mean^2 by the # of elements being summed-over
         # to account for the mean being summed that many times.
         #
-        p1sd = np.sum(pixels1 ** 2) - p1_mean ** 2 * np.product(s)
-        p2sd = np.sum(pixels2 ** 2) - p2_mean ** 2 * np.product(s)
+        p1sd = np.sum(pixels1 ** 2) - p1_mean ** 2 * np.prod(s)
+        p2sd = np.sum(pixels2 ** 2) - p2_mean ** 2 * np.prod(s)
         #
         # There's always chance of roundoff error for a zero value
         # resulting in a negative sd, so limit the sds here
@@ -529,7 +529,7 @@ a separate alignment to the first image can be calculated:
         # deviation is less than 1/100 of the maximum. We exclude these
         # from consideration.
         #
-        corrnorm[(unit < np.product(s) / 2) & (sd < np.mean(sd) / 100)] = 0
+        corrnorm[(unit < np.prod(s) / 2) & (sd < np.mean(sd) / 100)] = 0
         i, j = np.unravel_index(np.argmax(corrnorm), fshape)
         #
         # Reflect values that fall into the second half

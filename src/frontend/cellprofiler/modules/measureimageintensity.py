@@ -284,7 +284,7 @@ class MeasureImageIntensity(Module):
         measurement_name - group title to be used in data tables
         workspace - has all the details for current image set
         """
-        pixel_count = numpy.product(pixels.shape)
+        pixel_count = numpy.prod(pixels.shape)
         percentile_measures = {}
         if pixel_count == 0:
             pixel_sum = 0
@@ -305,7 +305,7 @@ class MeasureImageIntensity(Module):
             pixels = pixels[
                 numpy.nonzero(numpy.isfinite(pixels))[0]
             ]  # Ignore NaNs, Infs
-            pixel_count = numpy.product(pixels.shape)
+            pixel_count = numpy.prod(pixels.shape)
 
             pixel_sum = numpy.sum(pixels)
             pixel_mean = pixel_sum / float(pixel_count)

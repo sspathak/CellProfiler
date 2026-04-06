@@ -234,7 +234,7 @@ def test_zero(image, measurements, module, objects, workspace):
 
             data = measurements.get_current_measurement("MyObjects", feature_name)
 
-            assert numpy.product(data.shape) == 0, (
+            assert numpy.prod(data.shape) == 0, (
                 "Got data for feature %s" % feature_name
             )
 
@@ -263,7 +263,7 @@ def test_masked(image, measurements, module, objects, workspace):
 
         data = measurements.get_current_measurement("MyObjects", feature_name)
 
-        assert numpy.product(data.shape) == 1
+        assert numpy.prod(data.shape) == 1
 
         assert numpy.all(numpy.isnan(data) | (data == 0))
 
@@ -374,7 +374,7 @@ def test_one(image, measurements, module, objects, workspace):
 
         data = measurements.get_current_measurement("MyObjects", feature_name)
 
-        assert numpy.product(data.shape) == 1
+        assert numpy.prod(data.shape) == 1
 
         assert data[0] == value, "%s expected %f != actual %f" % (
             meas_name,
@@ -430,7 +430,7 @@ def test_one_masked(image, measurements, module, objects, workspace):
 
         data = measurements.get_current_measurement("MyObjects", feature_name)
 
-        assert numpy.product(data.shape) == 1
+        assert numpy.prod(data.shape) == 1
 
         assert data[0] == value, "%s expected %f != actual %f" % (
             meas_name,
@@ -537,7 +537,7 @@ def test_mass_displacement(image, measurements, module, objects, workspace):
 
     mass_displacement = measurements.get_current_measurement("MyObjects", feature_name)
 
-    assert numpy.product(mass_displacement.shape) == 3
+    assert numpy.prod(mass_displacement.shape) == 3
 
     numpy.testing.assert_almost_equal(mass_displacement[0], math.sqrt(8.0))
 
@@ -609,7 +609,7 @@ def test_mass_displacement_masked(image, measurements, module, objects, workspac
 
     mass_displacement = measurements.get_current_measurement("MyObjects", feature_name)
 
-    assert numpy.product(mass_displacement.shape) == 3
+    assert numpy.prod(mass_displacement.shape) == 3
 
     numpy.testing.assert_almost_equal(mass_displacement[0], math.sqrt(8.0))
 

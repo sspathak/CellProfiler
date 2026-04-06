@@ -107,11 +107,11 @@ class TestRelateObjects(unittest.TestCase):
         parents_of = m.get_current_measurement(
             CHILD_OBJECTS, "Parent_%s" % PARENT_OBJECTS
         )
-        self.assertEqual(numpy.product(parents_of.shape), 0)
+        self.assertEqual(numpy.prod(parents_of.shape), 0)
         child_count = m.get_current_measurement(
             PARENT_OBJECTS, "Children_%s_Count" % CHILD_OBJECTS
         )
-        self.assertEqual(numpy.product(child_count.shape), 0)
+        self.assertEqual(numpy.prod(child_count.shape), 0)
         self.features_and_columns_match(workspace)
 
     def test_02_01_relate_one(self):
@@ -126,12 +126,12 @@ class TestRelateObjects(unittest.TestCase):
         parents_of = m.get_current_measurement(
             CHILD_OBJECTS, "Parent_%s" % PARENT_OBJECTS
         )
-        self.assertEqual(numpy.product(parents_of.shape), 1)
+        self.assertEqual(numpy.prod(parents_of.shape), 1)
         self.assertEqual(parents_of[0], 1)
         child_count = m.get_current_measurement(
             PARENT_OBJECTS, "Children_%s_Count" % CHILD_OBJECTS
         )
-        self.assertEqual(numpy.product(child_count.shape), 1)
+        self.assertEqual(numpy.prod(child_count.shape), 1)
         self.assertEqual(child_count[0], 1)
         self.features_and_columns_match(workspace)
 
@@ -152,12 +152,12 @@ class TestRelateObjects(unittest.TestCase):
         parents_of = m.get_current_measurement(
             CHILD_OBJECTS, "Parent_%s" % PARENT_OBJECTS
         )
-        self.assertEqual(numpy.product(parents_of.shape), 1)
+        self.assertEqual(numpy.prod(parents_of.shape), 1)
         self.assertEqual(parents_of[0], 1)
         child_count = m.get_current_measurement(
             PARENT_OBJECTS, "Children_%s_Count" % CHILD_OBJECTS
         )
-        self.assertEqual(numpy.product(child_count.shape), 1)
+        self.assertEqual(numpy.prod(child_count.shape), 1)
         self.assertEqual(child_count[0], 1)
         self.features_and_columns_match(workspace)
 
@@ -173,14 +173,14 @@ class TestRelateObjects(unittest.TestCase):
         parents_of = m.get_current_measurement(
             CHILD_OBJECTS, "Parent_%s" % PARENT_OBJECTS
         )
-        self.assertEqual(numpy.product(parents_of.shape), 3)
+        self.assertEqual(numpy.prod(parents_of.shape), 3)
         self.assertTrue(parents_of[0], 1)
         self.assertEqual(parents_of[1], 1)
         self.assertEqual(parents_of[2], 2)
         child_count = m.get_current_measurement(
             PARENT_OBJECTS, "Children_%s_Count" % CHILD_OBJECTS
         )
-        self.assertEqual(numpy.product(child_count.shape), 2)
+        self.assertEqual(numpy.prod(child_count.shape), 2)
         self.assertEqual(child_count[0], 2)
         self.assertEqual(child_count[1], 1)
 
@@ -496,11 +496,11 @@ class TestRelateObjects(unittest.TestCase):
         parents_of = m.get_current_measurement(
             CHILD_OBJECTS, "Parent_%s" % PARENT_OBJECTS
         )
-        self.assertEqual(numpy.product(parents_of.shape), 1)
+        self.assertEqual(numpy.prod(parents_of.shape), 1)
         self.assertEqual(parents_of[0], 1)
         child_count = m.get_current_measurement(
             PARENT_OBJECTS, "Children_%s_Count" % CHILD_OBJECTS
         )
-        self.assertEqual(numpy.product(child_count.shape), 1)
+        self.assertEqual(numpy.prod(child_count.shape), 1)
         self.assertEqual(child_count[0], 1)
         self.features_and_columns_match(workspace)
