@@ -889,7 +889,7 @@ def measure_correlation_and_slope_from_objects(
         )
     )
     # Explicitly set the correlation to NaN for masked objects
-    corr[scipy.ndimage.sum(1, labels, lrange) == 0] = numpy.NaN
+    corr[scipy.ndimage.sum(1, labels, lrange) == 0] = numpy.nan
     return corr
 
 #

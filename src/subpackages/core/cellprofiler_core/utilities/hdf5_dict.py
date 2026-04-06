@@ -75,7 +75,7 @@ setattr(h5py.Dataset, orig_hdf5_setitem.__name__, new_setitem)
 
 
 def infer_hdf5_type(val):
-    if isinstance(val, str) or numpy.sctype2char(numpy.asanyarray(val).dtype) == "S":
+    if isinstance(val, str) or numpy.dtype(numpy.asanyarray(val).dtype).char == "S":
         return h5py.special_dtype(vlen=str)
     if all(isinstance(v, str) for v in val):
         return h5py.string_dtype()

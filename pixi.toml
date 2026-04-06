@@ -41,17 +41,16 @@ env = { MYSQLCLIENT_CFLAGS = "-I$CONDA_PREFIX/include/mysql", MYSQLCLIENT_LDFLAG
 env = { JAVA_HOME = "$CONDA_PREFIX/lib/jvm" }
 
 [dependencies]
-python = "3.9.*"
-h5py = "<3.11"
+python = "3.13.*"
+h5py = ">=3.7.0"
 
 [target.osx.dependencies]
 "python.app" = ">=1.4,<2"
 
-# enable this to avoid building wxPython wheel on Linux
-# disable to build wheel from scratch
-# url must be changed to match linux distro: https://extras.wxpython.org/wxPython4/extras/linux/gtk3/
-[target.linux-64.pypi-dependencies]
-wxPython = { url = "https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-24.04/wxpython-4.2.3-cp39-cp39-linux_x86_64.whl" }
+# wxPython wheel URLs are Python-version-specific and not available for 3.13
+# Re-enable when wxPython publishes 3.13 wheels
+# [target.linux-64.pypi-dependencies]
+# wxPython = { url = "https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-24.04/wxpython-4.2.3-cp313-cp313-linux_x86_64.whl" }
 
 [target.linux-64.dependencies]
 sdl2 = ">=2.0.0,<3.0.0"
@@ -59,8 +58,9 @@ sdl2 = ">=2.0.0,<3.0.0"
 [target.linux-64.activation]
 env = { LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:$CONDA_PREFIX/lib" }
 
-[target.osx-arm64.pypi-dependencies]
-wxpython = "==4.2.1"
+# wxPython not available for Python 3.13 yet
+# [target.osx-arm64.pypi-dependencies]
+# wxpython = "==4.2.1"
 
 [feature.mysql.target.osx.dependencies]
 pkg-config = "<1.0.0"

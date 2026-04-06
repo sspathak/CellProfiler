@@ -563,7 +563,7 @@ parents or children of the parent object.""",
         ccenters = children.center_of_mass()
 
         if pcenters.shape[0] == 0 or ccenters.shape[0] == 0:
-            dist = numpy.array([numpy.NaN] * len(parents_of))
+            dist = numpy.array([numpy.nan] * len(parents_of))
         else:
             #
             # Make indexing of parents_of be same as pcenters
@@ -572,7 +572,7 @@ parents or children of the parent object.""",
 
             mask = (parents_of != -1) | (parents_of > pcenters.shape[0])
 
-            dist = numpy.array([numpy.NaN] * ccenters.shape[0])
+            dist = numpy.array([numpy.nan] * ccenters.shape[0])
 
             dist[mask] = numpy.sqrt(
                 numpy.sum((ccenters[mask, :] - pcenters[parents_of[mask], :]) ** 2, 1)
@@ -595,7 +595,7 @@ parents or children of the parent object.""",
         if len(parents_of) == 0:
             dist = numpy.zeros((0,))
         elif numpy.all(parents_of == 0):
-            dist = numpy.array([numpy.NaN] * len(parents_of))
+            dist = numpy.array([numpy.nan] * len(parents_of))
         else:
             mask = parents_of > 0
 
@@ -670,7 +670,7 @@ parents or children of the parent object.""",
             min_dist = scipy.ndimage.minimum(dist, clabel, numpy.arange(len(ccounts)))
 
             # Account for unparented children
-            dist = numpy.array([numpy.NaN] * len(mask))
+            dist = numpy.array([numpy.nan] * len(mask))
 
             dist[mask] = min_dist
 

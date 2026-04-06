@@ -105,7 +105,7 @@ def get_menu_id(d, idx):
 
 def format_plate_data_as_array(plate_dict, plate_type):
     """ Returns an array shaped like the given plate type with the values from
-    plate_dict stored in it.  Wells without data will be set to np.NaN
+    plate_dict stored in it.  Wells without data will be set to np.nan
     plate_dict  -  dict mapping well names to data. eg: d["A01"] --> data
                    data values must be of numerical or string types
     plate_type  - '96' (return 8x12 array) or '384' (return 16x24 array)

@@ -65,7 +65,7 @@ class Rules(Module):
                     )
             )
             if values is None:
-                values = numpy.array([numpy.NaN])
+                values = numpy.array([numpy.nan])
             elif numpy.isscalar(values):
                 values = numpy.array([values])
             score = numpy.zeros((len(values), self.weights.shape[1]), float)

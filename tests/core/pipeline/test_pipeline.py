@@ -12,9 +12,9 @@ from pathlib import Path
 from importlib.util import find_spec
 
 import numpy
-import numpy.lib.index_tricks
 import six
 import six.moves
+import numpy.lib
 
 import tests.core.modules
 from cellprofiler_core.constants.measurement import (
@@ -85,8 +85,7 @@ def module_directory():
 
 def image_with_one_cell(size=(100, 100)):
     img = numpy.zeros(size)
-    mgrid = numpy.lib.index_tricks.nd_grid()
-    g = mgrid[0: size[0], 0: size[1]] - 50
+    g = numpy.mgrid[0: size[0], 0: size[1]] - 50
     dist = (
             g[0, :, :] * g[0, :, :] + g[1, :, :] * g[1, :, :]
     )  # squared Euclidean distance.

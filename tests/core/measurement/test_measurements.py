@@ -317,7 +317,7 @@ class TestMeasurements:
     #     self.assertSequenceEqual(expected, result)
 
     # def test_04_07_set_many_numeric_measurements(self):
-    #     test = [1.5, np.NaN, 3.0]
+    #     test = [1.5, np.nan, 3.0]
     #     m = cpmeas.Measurements()
     #     m[cpmeas.IMAGE, "Feature", range(1, len(test)+1)] = test
     #

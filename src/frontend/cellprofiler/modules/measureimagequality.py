@@ -1109,7 +1109,7 @@ to the foreground pixels or the background pixels.
             )
             value = workspace.image_set.get_image(image_name).scale
             if not value:  # Set to NaN if not defined, such as for derived images
-                value = numpy.NaN
+                value = numpy.nan
             workspace.add_measurement("Image", feature, value)
             result += [["{} scaling".format(image_name), value]]
         return result

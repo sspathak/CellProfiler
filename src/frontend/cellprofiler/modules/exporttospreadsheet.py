@@ -1170,7 +1170,7 @@ desired.
                             if self.nan_representation == NANS_AS_NULLS:
                                 row.append("")
                             else:
-                                row.append(str(numpy.NaN))
+                                row.append(str(numpy.nan))
                         else:
                             row.append(str(value))
                 writer.writerow(row)
