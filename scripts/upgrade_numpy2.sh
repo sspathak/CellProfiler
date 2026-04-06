@@ -133,5 +133,40 @@ replace_in_py_files \
     's/scipy\.io\.matlab\.mio\.savemat/scipy.io.savemat/g' \
     "scipy.io.matlab.mio.savemat → scipy.io.savemat (deprecated namespace)"
 
+# --------------------------------------------------------------------------
+# skimage.morphology.skeletonize_3d → skimage.morphology.skeletonize
+# skeletonize_3d was deprecated and removed. skeletonize works for 2D and 3D.
+# --------------------------------------------------------------------------
+replace_in_py_files \
+    'skimage\.morphology\.skeletonize_3d' \
+    's/skimage\.morphology\.skeletonize_3d/skimage.morphology.skeletonize/g' \
+    "skimage.morphology.skeletonize_3d → skimage.morphology.skeletonize"
+
+# --------------------------------------------------------------------------
+# scipy.linalg.basic.lstsq → scipy.linalg.lstsq
+# scipy.linalg.basic namespace is deprecated in scipy >= 1.11.
+# --------------------------------------------------------------------------
+replace_in_py_files \
+    'scipy\.linalg\.basic\.lstsq' \
+    's/scipy\.linalg\.basic\.lstsq/scipy.linalg.lstsq/g' \
+    "scipy.linalg.basic.lstsq → scipy.linalg.lstsq (deprecated namespace)"
+
+# --------------------------------------------------------------------------
+# Complex non-automated fixes required for NumPy 2.0 / SciPy 1.11+ 
+# --------------------------------------------------------------------------
+# 1. Tifffile API changes: 
+#    Passing compression=(8, 6) is removed in newer tifffile. Use compression="zlib", compressionargs={"level": 6}.
+#
+# 2. Stricter numpy boolean/scalar assignment & usage:
+#    - centrosome.cpmorphology.median_of_labels(...) returns a 1D array instead of scalar. 
+#      Indexing with [0] is necessary to use it as a scalar.
+#    - float(val) fails if val is a 1D array, even if length=1. Use float(val[0]) or float(np.asarray(val).item()).
+#    - np.bool_ can no longer be used as an index for tuples. E.g. tuple[np.bool_(True)] fails. 
+#      Cast to int(): tuple[int(np.bool_val)].
+#
+# 3. scipy.stats.mode return value change:
+#    In scipy >= 1.11, mode(array, keepdims=False) returns a scalar for 1D input instead of [scalar].
+#    Thus, scipy.stats.mode(...)[0][0] fails. It must be updated to scipy.stats.mode(...)[0].
+
 echo ""
 echo "Done."

@@ -516,7 +516,7 @@ def measure_object_size_shape(
             )
             median_radius[index] = centrosome.cpmorphology.median_of_labels(
                 distances, mini_image.astype("int"), [1]
-            )
+            )[0]
 
         #
         # Zernike features

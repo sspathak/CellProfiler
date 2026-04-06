@@ -1248,7 +1248,7 @@ to the foreground pixels or the background pixels.
                 if len(value) != 1 or not numpy.isfinite(value[0]):
                     value = 0.0
                 else:
-                    value = float(value)
+                    value = float(value[0])
                     
                 workspace.add_measurement(
                     "Image",
@@ -1410,7 +1410,7 @@ to the foreground pixels or the background pixels.
                 power = power[valid].reshape((-1, 1))
                 if radii.shape[0] > 1:
                     idx = numpy.isfinite(numpy.log(power))
-                    powerslope = scipy.linalg.basic.lstsq(
+                    powerslope = scipy.linalg.lstsq(
                         numpy.hstack(
                             (
                                 numpy.log(radii)[idx][:, numpy.newaxis],
@@ -1424,15 +1424,16 @@ to the foreground pixels or the background pixels.
             else:
                 powerslope = 0
 
+            powerslope_val = float(numpy.asarray(powerslope).item())
             workspace.add_measurement(
                 "Image",
                 "{}_{}_{}".format(C_IMAGE_QUALITY, F_POWER_SPECTRUM_SLOPE, image_name),
-                powerslope,
+                powerslope_val,
             )
             result += [
                 [
                     "{} {}".format(image_name, F_POWER_SPECTRUM_SLOPE),
-                    "{:.1f}".format(float(powerslope)),
+                    "{:.1f}".format(powerslope_val),
                 ]
             ]
         return result

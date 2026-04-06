@@ -185,7 +185,7 @@ def morphological_skeleton_2d(image):
 
 
 def morphological_skeleton_3d(image):
-    return skimage.morphology.skeletonize_3d(image)
+    return skimage.morphology.skeletonize(image)
 
 
 ################################################################################
