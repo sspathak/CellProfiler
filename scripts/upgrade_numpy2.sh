@@ -69,5 +69,69 @@ replace_in_py_files \
     's/np\.Inf([^i])/np.inf\1/g; s/numpy\.Inf([^i])/numpy.inf\1/g; s/np\.Inf$/np.inf/g; s/numpy\.Inf$/numpy.inf/g' \
     "np.Inf / numpy.Inf → np.inf / numpy.inf (removed in NumPy 2.0)"
 
+# --------------------------------------------------------------------------
+# np.NAN / numpy.NAN → np.nan / numpy.nan
+# np.NAN (all caps) was also removed in NumPy 2.0.
+# --------------------------------------------------------------------------
+replace_in_py_files \
+    'np\.NAN\|numpy\.NAN' \
+    's/np\.NAN/np.nan/g; s/numpy\.NAN/numpy.nan/g' \
+    "np.NAN / numpy.NAN → np.nan / numpy.nan (removed in NumPy 2.0)"
+
+# --------------------------------------------------------------------------
+# np.in1d( / numpy.in1d( → np.isin( / numpy.isin(
+# np.in1d was removed in NumPy 2.0. np.isin is the replacement.
+# Note: np.isin has the same signature for the common case.
+# --------------------------------------------------------------------------
+replace_in_py_files \
+    'np\.in1d(\|numpy\.in1d(' \
+    's/np\.in1d\(/np.isin(/g; s/numpy\.in1d\(/numpy.isin(/g' \
+    "np.in1d() / numpy.in1d() → np.isin() / numpy.isin() (removed in NumPy 2.0)"
+
+# --------------------------------------------------------------------------
+# np.core.records → np.rec
+# numpy.core is deprecated in NumPy 2.0. np.rec is the public API.
+# --------------------------------------------------------------------------
+replace_in_py_files \
+    'np\.core\.records\|numpy\.core\.records' \
+    's/np\.core\.records/np.rec/g; s/numpy\.core\.records/numpy.rec/g' \
+    "np.core.records / numpy.core.records → np.rec / numpy.rec (numpy.core deprecated in NumPy 2.0)"
+
+# --------------------------------------------------------------------------
+# scipy.sparse.coo.coo_matrix → scipy.sparse.coo_matrix
+# scipy.sparse.coo submodule namespace is deprecated, removed in SciPy 2.0.
+# --------------------------------------------------------------------------
+replace_in_py_files \
+    'scipy\.sparse\.coo\.coo_matrix' \
+    's/scipy\.sparse\.coo\.coo_matrix/scipy.sparse.coo_matrix/g' \
+    "scipy.sparse.coo.coo_matrix → scipy.sparse.coo_matrix (deprecated namespace)"
+
+# --------------------------------------------------------------------------
+# scipy.ndimage.filters.X → scipy.ndimage.X
+# scipy.ndimage.filters namespace is deprecated, removed in SciPy 2.0.
+# --------------------------------------------------------------------------
+replace_in_py_files \
+    'scipy\.ndimage\.filters\.' \
+    's/scipy\.ndimage\.filters\./scipy.ndimage./g' \
+    "scipy.ndimage.filters.X → scipy.ndimage.X (deprecated namespace)"
+
+# --------------------------------------------------------------------------
+# scipy.ndimage.measurements.X → scipy.ndimage.X
+# scipy.ndimage.measurements namespace is deprecated, removed in SciPy 2.0.
+# --------------------------------------------------------------------------
+replace_in_py_files \
+    'scipy\.ndimage\.measurements\.' \
+    's/scipy\.ndimage\.measurements\./scipy.ndimage./g' \
+    "scipy.ndimage.measurements.X → scipy.ndimage.X (deprecated namespace)"
+
+# --------------------------------------------------------------------------
+# scipy.io.matlab.mio.savemat → scipy.io.savemat
+# scipy.io.matlab.mio namespace is deprecated, removed in SciPy 2.0.
+# --------------------------------------------------------------------------
+replace_in_py_files \
+    'scipy\.io\.matlab\.mio\.savemat' \
+    's/scipy\.io\.matlab\.mio\.savemat/scipy.io.savemat/g' \
+    "scipy.io.matlab.mio.savemat → scipy.io.savemat (deprecated namespace)"
+
 echo ""
 echo "Done."

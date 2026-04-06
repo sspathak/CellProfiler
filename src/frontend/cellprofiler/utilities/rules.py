@@ -212,7 +212,7 @@ characters in a column name" setting. """
             score_len = partial_score.shape[0]
             score[:score_len, :] += partial_score[:score_len, :]
             if score.shape[0] > partial_score.shape[0]:
-                score[score_len:, :] = numpy.NAN
+                score[score_len:, :] = numpy.nan
         return score
 
     def get_classes(self):

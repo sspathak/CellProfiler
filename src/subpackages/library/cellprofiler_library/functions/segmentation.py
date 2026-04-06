@@ -354,7 +354,7 @@ def convert_dense_to_sparse(dense, validate=True):
 
     dtype = [(axis, coords_dtype) for axis in axes]
     dtype.append((SPARSE_FIELD.label.value, labels_dtype))
-    sparse = np.core.records.fromarrays(list(coords) + [labels], dtype=dtype)
+    sparse = np.rec.fromarrays(list(coords) + [labels], dtype=dtype)
 
     return sparse
 
@@ -362,7 +362,7 @@ def convert_ijv_to_sparse(ijv, validate=True):
     if validate:
         _validate_ijv(ijv)
 
-    return np.core.records.fromarrays(
+    return np.rec.fromarrays(
         (ijv[:, 0], ijv[:, 1], ijv[:, 2]),
         [
             (SPARSE_FIELD.y.value, ijv.dtype),

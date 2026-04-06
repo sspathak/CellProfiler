@@ -288,7 +288,7 @@ def maybe_download_sbs():
 
     for filename in ["Channel1ILLUM.mat", "Channel2ILLUM.mat"]:
         pixels = np.ones((20, 30))
-        scipy.io.matlab.mio.savemat(
+        scipy.io.savemat(
             os.path.join(path, filename), {"Image": pixels}, format="5"
         )
     return path

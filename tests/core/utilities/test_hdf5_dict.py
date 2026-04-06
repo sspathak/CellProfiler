@@ -874,7 +874,7 @@ class TestHDF5ObjectSet(HDF5DictTessstBase):
         self.assertFalse(
             object_set.has_sparse(self.OBJECTS_NAME, self.SEGMENTATION_NAME)
         )
-        expected = np.core.records.fromarrays(
+        expected = np.rec.fromarrays(
             r.randint(0, 10, (3, 9)),
             [
                 (object_set.AXIS_Y, np.uint32, 1),
@@ -899,7 +899,7 @@ class TestHDF5ObjectSet(HDF5DictTessstBase):
         object_set = H5DICT.HDF5ObjectSet(self.hdf_file)
         expected = r.randint(0, 10, size=(11, 13))
         object_set.set_dense(self.OBJECTS_NAME, self.SEGMENTATION_NAME, expected)
-        expected = np.core.records.fromarrays(
+        expected = np.rec.fromarrays(
             r.randint(0, 10, (3, 9)),
             [
                 (object_set.AXIS_Y, np.uint32, 1),
@@ -955,7 +955,7 @@ class TestHDF5ObjectSet(HDF5DictTessstBase):
         self.assertFalse(
             object_set.has_sparse(self.OBJECTS_NAME, self.SEGMENTATION_NAME)
         )
-        expected = np.core.records.fromarrays(
+        expected = np.rec.fromarrays(
             r.randint(0, 10, (3, 9)),
             [
                 (object_set.AXIS_Y, np.uint32, 1),
@@ -964,7 +964,7 @@ class TestHDF5ObjectSet(HDF5DictTessstBase):
             ],
         )
         object_set.set_sparse(self.OBJECTS_NAME, self.SEGMENTATION_NAME, expected)
-        expected = np.core.records.fromarrays(
+        expected = np.rec.fromarrays(
             r.randint(0, 10, (3, 20)),
             [
                 (object_set.AXIS_Y, np.uint32, 1),
@@ -976,7 +976,7 @@ class TestHDF5ObjectSet(HDF5DictTessstBase):
         np.testing.assert_array_equal(
             expected, object_set.get_sparse(self.OBJECTS_NAME, self.SEGMENTATION_NAME)
         )
-        expected = np.core.records.fromarrays(
+        expected = np.rec.fromarrays(
             r.randint(0, 10, (3, 6)),
             [
                 (object_set.AXIS_Y, np.uint32, 1),

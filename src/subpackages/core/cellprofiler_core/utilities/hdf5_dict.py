@@ -1564,7 +1564,7 @@ class HDF5ObjectSet(object):
                ys = np.array([100], np.uint32)
                xs = np.array([200], np.uint32)
                ls = np.array([1], np.uint32)
-               data = np.core.records.fromarrays([ys,xs,ls], dtype)
+               data = np.rec.fromarrays([ys,xs,ls], dtype)
         """
         segmentation_group = self.__ensure_group(objects_name, segmentation_name)
         create = False

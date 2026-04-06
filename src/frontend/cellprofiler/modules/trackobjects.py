@@ -2299,7 +2299,7 @@ Enter a name to give the color-coded image of tracked labels.""",
         #      LAP Processing # 1
         #
         x, y = lapjv(i, j, c)
-        score_matrix = scipy.sparse.coo.coo_matrix((c, (i, j))).tocsr()
+        score_matrix = scipy.sparse.coo_matrix((c, (i, j))).tocsr()
 
         # ---------------------------
         #
@@ -3184,7 +3184,7 @@ Enter a name to give the color-coded image of tracked labels.""",
             if self.wants_lifetime_filtering.value:
                 if len(labels_to_filter) > 0:
                     this_label = label[index].astype(float)
-                    this_label[np.in1d(this_label, np.array(labels_to_filter))] = np.nan
+                    this_label[np.isin(this_label, np.array(labels_to_filter))] = np.nan
                     label[index] = this_label
         m.add_experiment_measurement(F_EXPT_ORIG_NUMTRACKS, nlabels)
         if self.wants_lifetime_filtering.value:

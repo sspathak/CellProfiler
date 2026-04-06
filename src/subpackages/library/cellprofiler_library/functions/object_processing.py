@@ -595,7 +595,7 @@ def filter_on_size(
     object_count = numpy.max(labeled_image)
     # Check if there are no labelled objects
     if object_count > 0:
-        areas = scipy.ndimage.measurements.sum(
+        areas = scipy.ndimage.sum(
             numpy.ones(labeled_image.shape),
             labeled_image,
             numpy.array(list(range(0, object_count + 1)), dtype=numpy.int32),

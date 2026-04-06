@@ -1723,7 +1723,7 @@ def test_aggregate_image_columns(output_dir):
                 if agg == AGG_STD_DEV
                 else numpy.median(data)
                 if agg == AGG_MEDIAN
-                else numpy.NAN
+                else numpy.nan
             )
             assert (
                 round(
@@ -2144,7 +2144,7 @@ def test_missing_measurements(output_dir):
                 row = next(reader)
                 assert len(row) == 3
                 if image_idx == 1:
-                    assert row[d["my_measurement"]] == str(numpy.NAN)
+                    assert row[d["my_measurement"]] == str(numpy.nan)
                 else:
                     assert (
                         round(
@@ -2263,7 +2263,7 @@ def test_missing_row_measurements(output_dir):
             m.add_image_measurement("my_measurement", 100)
             m.add_measurement("my_objects", "my_measurement", mvalues[image_idx, :])
         else:
-            m.add_image_measurement("Count_my_objects", numpy.NAN)
+            m.add_image_measurement("Count_my_objects", numpy.nan)
             m.add_image_measurement("my_measurement", 100)
             m.add_measurement("my_objects", "my_measurement", mvalues[image_idx, :])
     image_set_list = cellprofiler_core.image.ImageSetList()
