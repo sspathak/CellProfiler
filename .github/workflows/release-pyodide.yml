@@ -4,15 +4,15 @@ on:
   push:
     branches:
       - pyodide
-  release:
-    types: [published]
+    tags:
+      - 'v*'   # triggers on any tag like v1.0.0, v1.2.3-beta, etc.
 
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      
+      contents: write   # needed to create GitHub Releases and upload assets
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,14 +29,19 @@ jobs:
         working-directory: src/subpackages/library/
         run: python -m build
 
-      - name: Upload wheel as artifact
+      # Always upload the wheel as a workflow artifact (available on branch pushes too)
+      - name: Upload wheel as CI artifact
         uses: actions/upload-artifact@v4
         with:
           name: pyodide-wheel
           path: src/subpackages/library/dist/*.whl
 
-      - name: Upload to GitHub Release
-        if: github.event_name == 'release' && github.event.action == 'published'
+      # On a tag push: create a GitHub Release and attach the wheel
+      - name: Create GitHub Release and upload wheel
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.ref_name }}
+          name: "cellprofiler-library ${{ github.ref_name }}"
+          generate_release_notes: true
           files: src/subpackages/library/dist/*.whl
