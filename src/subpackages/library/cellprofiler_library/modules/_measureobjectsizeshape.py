@@ -3,7 +3,6 @@ import numpy
 import skimage
 import scipy
 
-import centrosome
 import centrosome.zernike
 
 from cellprofiler_library.functions.measurement import measure_object_size_shape

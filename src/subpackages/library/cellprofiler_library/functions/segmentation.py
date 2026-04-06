@@ -3,6 +3,7 @@ import numpy as np
 from numpy.random.mtrand import RandomState
 import scipy.sparse
 import centrosome.index
+import centrosome.outline
 
 class SPARSE_FIELD(Enum):
     label = "label"

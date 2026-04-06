@@ -3,7 +3,7 @@ import numpy
 import scipy
 import scipy.ndimage
 import skimage
-import centrosome
+import centrosome.zernike
 import centrosome.cpmorphology
 import centrosome.filter
 import centrosome.propagate

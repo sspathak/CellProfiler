@@ -8,9 +8,11 @@ from skimage.util import invert as _invert
 import skimage.transform
 import skimage
 import skimage.restoration
-import centrosome
-import centrosome.threshold
+import centrosome.cpmorphology
 import centrosome.filter
+import centrosome.otsu
+import centrosome.smooth
+import centrosome.threshold
 import scipy
 import scipy.interpolate
 import matplotlib

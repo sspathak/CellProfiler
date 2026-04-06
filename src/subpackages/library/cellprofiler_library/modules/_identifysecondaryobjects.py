@@ -1,7 +1,7 @@
 import numpy
 import skimage
 import scipy
-import centrosome
+import centrosome.cpmorphology
 import centrosome.propagate
 from typing import Annotated, Optional, Union, Tuple
 from pydantic import validate_call, ConfigDict, Field

@@ -1,7 +1,8 @@
 import warnings
 
 import numpy
-import centrosome
+import centrosome.filter
+import centrosome.kirsch
 from pydantic import Field, validate_call, ConfigDict
 from typing import Annotated, Optional
 from ..functions.image_processing import (
