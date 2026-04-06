@@ -73,7 +73,9 @@ dependencies = [
     "imageio>=2.31.3",
     "Jinja2>=3.1.2",
     "joblib>=1.3.2",
-    "mahotas>=1.4.13",
+    "mahotas>=1.4.13 ; platform_machine != 'wasm32'",
+    # Use the WASM wheel in Pyodide
+    "mahotas @ https://github.com/sspathak/mahotas-pyodide/releases/download/v1.0.6/mahotas-1.4.18-cp313-cp313-emscripten_4_0_9_wasm32.whl ; platform_machine == 'wasm32'",
     "matplotlib>=3.1.3,<4",
     "mysqlclient>=2.2.3",
     "numpy>=2.0.1",
